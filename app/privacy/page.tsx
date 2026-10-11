@@ -42,16 +42,16 @@ export default function Privacy() {
         <section>
           <h2>Analytics and site performance</h2>
           <p>
-            We use Google Analytics to understand how the site is used: the pages
+            We use Analytics to understand how the site is used: the pages
             visited, which videos are played, which filters are chosen, and
             which form steps are completed, including the format, goal, budget
             range, and number of platforms selected. Your name, email, and
-            message are not sent to analytics. Google Analytics keeps a random
+            message are not sent to analytics. Analytics keeps a random
             identifier in your browser’s storage to recognise return visits,
             and it also reports website errors so they can be fixed.
           </p>
           <p>
-            Google Analytics counts page views without cookies, and
+            Analytics counts page views without cookies, and
             Speed Insights measures how quickly pages load. You can block these
             tools with your browser’s privacy settings or a content blocker;
             the site works the same without them.
@@ -65,7 +65,7 @@ export default function Privacy() {
             playback can still involve data processing by YouTube or TikTok.
             Links to social platforms follow those platforms’ own policies.
             Fonts are served from this website, and the site is hosted on
-            Google Cloud Platform, which processes technical request information to operate
+            Cloud Platform, which processes technical request information to operate
             it.
           </p>
         </section>
