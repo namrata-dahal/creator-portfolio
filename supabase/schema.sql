@@ -1,5 +1,5 @@
 -- Create inquiries table
-CREATE TABLE IF NOT EXISTS inquiries (
+CREATE TABLE IF NOT EXISTS public.inquiries (
   id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
   name TEXT NOT NULL,
   email TEXT NOT NULL,
@@ -18,22 +18,29 @@ CREATE TABLE IF NOT EXISTS inquiries (
 );
 
 -- Add RLS policies
-ALTER TABLE inquiries ENABLE ROW LEVEL SECURITY;
+ALTER TABLE public.inquiries ENABLE ROW LEVEL SECURITY;
 
 -- Allow anyone to insert (public form submissions)
-CREATE POLICY "Allow public insert" ON inquiries
+DROP POLICY IF EXISTS "Allow public insert" ON public.inquiries;
+CREATE POLICY "Allow public insert" ON public.inquiries
   FOR INSERT
-  TO anon
+  TO anon, authenticated
   WITH CHECK (true);
 
--- Allow authenticated users to read (for admin dashboard)
-CREATE POLICY "Allow authenticated read" ON inquiries
-  FOR SELECT
-  TO authenticated
-  USING (true);
+-- No read policy: requests are read only from the Supabase dashboard, which bypasses RLS.
+-- Anyone can create a Supabase account with the public key, so "authenticated" must never be granted SELECT.
+DROP POLICY IF EXISTS "Allow authenticated read" ON public.inquiries;
+
+-- Visitors may only fill in form fields; status and created_at keep their defaults.
+REVOKE ALL ON public.inquiries FROM anon, authenticated;
+GRANT INSERT (id, name, email, brand, website, objective, format, budget, platforms, timeline, usage, details, consent)
+  ON public.inquiries TO anon, authenticated;
 
 -- Create index on email for faster lookups
-CREATE INDEX IF NOT EXISTS idx_inquiries_email ON inquiries(email);
+CREATE INDEX IF NOT EXISTS idx_inquiries_email ON public.inquiries(email);
 
 -- Create index on created_at for sorting
-CREATE INDEX IF NOT EXISTS idx_inquiries_created_at ON inquiries(created_at DESC);
+CREATE INDEX IF NOT EXISTS idx_inquiries_created_at ON public.inquiries(created_at DESC);
+
+-- Make the Data API pick up the new table immediately
+NOTIFY pgrst, 'reload schema';

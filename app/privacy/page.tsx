@@ -1,3 +1,84 @@
-import {SiteShell} from '@/components/portfolio/shell';
-export const metadata={title:'Privacy & Content Notes | Namrata Dahal'};
-export default function Privacy(){return <SiteShell><main id="main" className="wrap policy-page"><p className="eyebrow">UPDATED 10 OCTOBER 2026</p><h1>Privacy &<br/><em>content notes.</em></h1><section><h2>Collaboration requests</h2><p>When you submit the collaboration form, this website stores your name, email, company, optional website, campaign details, budget range, preferred platforms, timing, and intended usage. Namrata uses these details to evaluate and respond to your inquiry. They are not published on the website.</p><p>Draft form entries stay in the current page until you submit or leave. Submitted requests are securely forwarded by the Vercel website to Namrata’s existing managed website backend and stored in its database and are accessible through an owner-protected inbox. No automated email confirmation is sent. Requests remain until deleted by the owner; you can ask for deletion via Instagram at <a href="https://www.instagram.com/namrata_dahal11">@namrata_dahal11</a>, identifying your request reference.</p></section><section><h2>Embedded videos and external services</h2><p>YouTube video players load only after you press play. The privacy-enhanced youtube-nocookie.com embed is used, but playback can still involve data processing by YouTube. External social links follow the destination platform’s policies. Google Fonts is used for typography, and hosting services may process technical request information to operate the site.</p></section><section><h2>Performance figures</h2><p>Displayed view counts and collaboration history are dated creator-provided snapshots. Views are not unique people, results across different periods are not combined, and past performance does not guarantee future results.</p></section><section><h2>AI-assisted imagery</h2><p>Selected editorial portraits and the imagined desk scene were created with AI using Namrata’s supplied photograph as a reference. They are labeled in their captions. The nursing-uniform photograph on the About page and media kit is the original supplied image. AI scenes are not evidence of an actual campaign, event, or clinical activity.</p></section></main></SiteShell>}
+import { SiteShell } from "@/components/portfolio/shell";
+import { Line } from "@/components/portfolio/line";
+import { contact } from "@/lib/portfolio";
+export const metadata = { title: "Privacy & Content Notes | Namrata Dahal" };
+export default function Privacy() {
+  return (
+    <SiteShell>
+      <main id="main" className="wrap policy-page page-intro">
+        <p className="eyebrow">UPDATED 11 OCTOBER 2026</p>
+        <h1 data-lines>
+          <Line>Privacy &amp;</Line>
+          <Line>
+            <em>content notes.</em>
+          </Line>
+        </h1>
+        <section>
+          <h2>Collaboration requests</h2>
+          <p>
+            When you send the collaboration form, this website collects your
+            name, work email, brand, optional website, main goal, product and
+            idea details, preferred format and platforms, budget range, timing,
+            intended usage, and your privacy consent. Namrata uses these details
+            only to review your request and reply to you. They are never
+            published, sold, or shared with other brands or agencies.
+          </p>
+          <p>
+            Draft entries stay in your browser until you send them. Sent
+            requests are stored in a database hosted by Supabase that only
+            Namrata can access; the website itself cannot read requests back.
+            Namrata receives an email alert for each new request and a weekly
+            summary of open requests, and you may receive a confirmation copy at
+            the email address you provide. These emails are sent through Resend.
+          </p>
+          <p>
+            Requests are kept while they are needed to respond and to manage any
+            resulting collaboration. To ask for a copy of your request or for
+            its deletion, message{" "}
+            <a href={contact.instagram}>{contact.instagramHandle}</a> on
+            Instagram with your request reference.
+          </p>
+        </section>
+        <section>
+          <h2>Analytics and site performance</h2>
+          <p>
+            PostHog is used to understand how the site is used: the pages
+            visited, which videos are played, which filters are chosen, and
+            which form steps are completed, including the format, goal, budget
+            range, and number of platforms selected. Your name, email, and
+            message are not sent to analytics. PostHog keeps a random
+            identifier in your browser’s storage to recognise return visits,
+            and it also reports website errors so they can be fixed.
+          </p>
+          <p>
+            Vercel Web Analytics counts page views without cookies, and Vercel
+            Speed Insights measures how quickly pages load. You can block these
+            tools with your browser’s privacy settings or a content blocker;
+            the site works the same without them.
+          </p>
+        </section>
+        <section>
+          <h2>Embedded videos and external services</h2>
+          <p>
+            YouTube and TikTok players load only after you press play. YouTube
+            videos use the privacy-enhanced youtube-nocookie.com player, but
+            playback can still involve data processing by YouTube or TikTok.
+            Links to social platforms follow those platforms’ own policies.
+            Fonts are served from this website, and the site is hosted on
+            Vercel, which processes technical request information to operate
+            it.
+          </p>
+        </section>
+        <section>
+          <h2>Performance figures</h2>
+          <p>
+            Displayed view counts and collaboration history are dated
+            creator-provided snapshots. Views are not unique people, results
+            across different periods are not combined, and past performance does
+            not guarantee future results.
+          </p>
+        </section>
+      </main>
+    </SiteShell>
+  );
+}
