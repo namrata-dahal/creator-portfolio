@@ -115,6 +115,22 @@ export const caseStudies: {
   quote?: { text: string; by: string };
 }[] = [
   {
+    brand: "Smart Educational Academy",
+    platform: "TikTok · Instagram · YouTube Shorts",
+    views: "11.2K",
+    viewsLabel: "TikTok video views",
+    title: "All Nepal BSc Nursing CEE Mirror Exam",
+    goal: "Share the free CEE Mirror Exam opportunity with nursing entrance aspirants across Nepal.",
+    made: "A short educational promotional video explaining the exam format, participating cities, and registration opportunity.",
+    tiktokId: "7695741668875767048",
+    links: [
+      {
+        label: "Watch on TikTok ↗",
+        url: tiktokVideoUrl("7695741668875767048"),
+      },
+    ],
+  },
+  {
     brand: "MedStellar",
     platform: "TikTok",
     views: "50.2K",
