@@ -163,23 +163,35 @@ async function loadContent(): Promise<Content> {
           ? ([p.highlight_value, p.highlight_label] as [string, string])
           : undefined,
     })),
-    caseStudies: (caseStudies.data ?? []).map((c) => ({
-      brand: c.brand,
-      platform: c.platform,
-      views: c.views,
-      viewsLabel: c.views_label,
-      title: c.title,
-      goal: c.goal,
-      made: c.made,
-      tiktokId: c.tiktok_id ?? undefined,
-      poster:
-        mediaUrl(c.poster_path) ??
-        (c.tiktok_id ? tiktokPoster(c.tiktok_id) : undefined),
-      links: Array.isArray(c.links) ? c.links : [],
-      quote: c.quote_text
-        ? { text: c.quote_text, by: c.quote_by ?? "" }
-        : undefined,
-    })),
+    caseStudies: [
+      ...(caseStudies.data ?? []).map((c) => ({
+        brand: c.brand,
+        platform: c.platform,
+        views: c.views,
+        viewsLabel: c.views_label,
+        title: c.title,
+        goal: c.goal,
+        made: c.made,
+        tiktokId: c.tiktok_id ?? undefined,
+        poster:
+          mediaUrl(c.poster_path) ??
+          (c.tiktok_id ? tiktokPoster(c.tiktok_id) : undefined),
+        links: Array.isArray(c.links) ? c.links : [],
+        quote: c.quote_text
+          ? { text: c.quote_text, by: c.quote_by ?? "" }
+          : undefined,
+      })),
+      // Keep this new collaboration visible until it is also added to Supabase.
+      ...portfolio.caseStudies
+        .filter(
+          (local) =>
+            local.brand === "Smart Educational Academy" &&
+            !(caseStudies.data ?? []).some(
+              (stored) => stored.brand === local.brand,
+            ),
+        )
+        .map((local) => ({ ...local, poster: undefined })),
+    ],
     videos: videos.data ?? [],
     shortVideos: (shortVideos.data ?? []).map((v) => ({
       id: v.id,
