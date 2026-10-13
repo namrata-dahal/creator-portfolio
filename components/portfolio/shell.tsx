@@ -11,7 +11,7 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
   const [menu, setMenu] = useState(false);
   const root = useRef<HTMLDivElement>(null);
   const header = useRef<HTMLElement>(null);
-  const showMobileCta = path !== "/collaborate";
+  const showMobileCta = path !== "/collaborate" && path !== "/creator-websites";
   useEffect(() => {
     setMenu(false);
     let disposed = false;
@@ -49,6 +49,7 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
     ["Work", "/work"],
     ["My story", "/about"],
     ["For brands", "/partnerships"],
+    ["For creators", "/creator-websites"],
   ];
   return (
     <div ref={root} className={showMobileCta ? "has-mobile-cta" : undefined}>
@@ -113,6 +114,7 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
         <div className="footer-small">
           <Link href="/media-kit">Media kit</Link>
           <Link href="/partnerships">For brands</Link>
+          <Link href="/creator-websites">Creator websites</Link>
           <Link href="/privacy">Privacy</Link>
           <span>© 2026 Namrata Dahal</span>
         </div>
