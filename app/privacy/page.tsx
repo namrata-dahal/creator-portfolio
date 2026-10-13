@@ -40,6 +40,10 @@ export default function Privacy() {
           </p>
         </section>
         <section>
+          <h2>Creator website requests</h2>
+          <p>When you request a creator website, we collect your name, email, creator handle, creator category, optional portfolio link, project notes and privacy consent. Your request is stored in a separate Supabase creator-website leads table. An email alert may be delivered to Namrata through Resend. This information is used to review the inquiry, discuss pricing and scope, and reply; it is not published or sold. A request is not a confirmed booking or a reservation of promotional pricing. To request access or deletion, reach out through the Instagram contact linked on this page.</p>
+        </section>
+        <section>
           <h2>Analytics and site performance</h2>
           <p>
             We use Analytics to understand how the site is used: the pages
